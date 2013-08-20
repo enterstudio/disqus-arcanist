@@ -11,36 +11,34 @@ arc_path="${root}/.arcconfig"
 
 if [ -e $arc_path ]; then
   echo "There is already a configuration file at $arc_path."
-  echo "Do you want to continue and overwrite the existing file? [yN]"
+  echo -n "Do you want to continue and overwrite the existing file? [yN] "
 
   read ok
 
-  if [[ $ok -ne "y" && $ok -ne "Y" ]]; then
+  if [[ $ok != "y" && $ok != "Y" ]]; then
     exit 0
   fi
 fi
 
 project_id=$(echo "$root" | python -c "import sys; print sys.stdin.read().rsplit('/', 1)[-1]")
 
-libdisqus_path=/usr/local/include/php/libdisqus/src
+libdisqus_path=$(brew --prefix arcanist)/arcanist/externals/includes/libdisqus/src
 
 echo "Creating default .arcconfig at '$arc_path'"
 
 { cat <<EOT
 {
-  "base": "git:merge-base(origin/master), arc:upstream, git:HEAD^",
   "project_id": "$project_id",
-  "conduit_uri" : "http://phabricator.local.disqus.net/",
-  "arcanist_configuration": "DisqusConfiguration",
-  "copyright_holder": "Disqus, Inc.",
-  "immutable_history": false,
-  "differential.field-selector": "DisqusDifferentialFieldSelector",
-  "lint_engine": "DisqusLintEngine",
-  "lint.flake8.options": "--ignore=W391,W292,W293,E501,E225,E121,E123,E124,E127,E128",
-  "lint.jshint.prefix": "node_modules/jshint/bin",
-  "lint.jshint.bin": "hint",
+  "conduit_uri": "http://ph.in.zhihu.com",
+  "arc.land.onto.default": "master",
+  "arc.land.remote.default": "origin",
+  "lint.engine": "ComprehensiveLintEngine",
+  "lint.pep8.options": "--ignore=E125,E501",
+  "jenkins.uri": "http://ci.in.zhihu.com",
+  "jenkins.job": "$project_id",
+  "events.listeners": ["JenkinsDiffEventListener"],
   "phutil_libraries": {
-      "disqus": "$libdisqus_path"
+    "disqus": "$libdisqus_path"
   }
 }
 EOT
