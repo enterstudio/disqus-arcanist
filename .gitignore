@@ -1,3 +1,9 @@
 .arcconfig
 *.pyc
 src/.phutil_module_cache
+
+*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
