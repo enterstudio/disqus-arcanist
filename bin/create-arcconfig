@@ -33,13 +33,11 @@ echo "Creating default .arcconfig at '$arc_path'"
   "arc.land.onto.default": "master",
   "arc.land.remote.default": "origin",
   "lint.engine": "ComprehensiveLintEngine",
-  "lint.pep8.options": "--ignore=E125,E501",
+  "lint.flake8.options": "--ignore=E125,E501",
+  "events.listeners": ["JenkinsDiffEventListener"],
   "jenkins.uri": "http://ci.in.zhihu.com",
   "jenkins.job": "$project_id",
-  "events.listeners": ["JenkinsDiffEventListener"],
-  "phutil_libraries": {
-    "disqus": "$libdisqus_path"
-  }
+  "load": ["$libdisqus_path"]
 }
 EOT
 } > $arc_path

@@ -17,12 +17,14 @@ phutil_register_library_map(array(
     'DisqusLintEngine' => 'lint/engine/DisqusLintEngine.php',
     'DisqusUnitTestEngine' => 'unittest/DisqusUnitTestEngine.php',
     'DjangoUnitTestEngine' => 'unittest/DjangoUnitTestEngine.php',
+    'GenericXUnitTestEngine' => 'unittest/GenericXUnitTestEngine.php',
     'JenkinsDiffEventListener' => 'event/JenkinsDiffEventListener.php',
     'MockManiphestTask' => 'event/__tests__/ProjectAssignmentEventListenerTestCase.php',
     'MockedProjectAssignmentEventListener' => 'event/__tests__/ProjectAssignmentEventListenerTestCase.php',
     'ProjectAssignmentEventListener' => 'event/ProjectAssignmentEventListener.php',
     'ProjectAssignmentEventListenerTestCase' => 'event/__tests__/ProjectAssignmentEventListenerTestCase.php',
     'SentryLogger' => 'sentrylogger/SentryLogger.php',
+    'SetupPyUnitTestEngine' => 'unittest/SetupPyUnitTestEngine.php',
   ),
   'function' =>
   array(
@@ -36,10 +38,12 @@ phutil_register_library_map(array(
     'DisqusLintEngine' => 'ArcanistLintEngine',
     'DisqusUnitTestEngine' => 'ArcanistBaseUnitTestEngine',
     'DjangoUnitTestEngine' => 'ArcanistBaseUnitTestEngine',
+    'GenericXUnitTestEngine' => 'ArcanistBaseUnitTestEngine',
     'JenkinsDiffEventListener' => 'PhutilEventListener',
     'MockManiphestTask' => 'ManiphestTask',
     'MockedProjectAssignmentEventListener' => 'ProjectAssignmentEventListener',
     'ProjectAssignmentEventListener' => 'PhutilEventListener',
     'ProjectAssignmentEventListenerTestCase' => 'PhabricatorTestCase',
+    'SetupPyUnitTestEngine' => 'ArcanistBaseUnitTestEngine',
   ),
 ));
