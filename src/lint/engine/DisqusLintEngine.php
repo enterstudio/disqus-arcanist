@@ -33,17 +33,11 @@ final class DisqusLintEngine extends ArcanistLintEngine {
     $linters[] = id(new ArcanistXHPASTLinter())
       ->setPaths(preg_grep('/\.php$/', $paths));
 
-    $linters[] = id(new ArcanistApacheLicenseLinter())
-      ->setPaths(preg_grep('/\.(php|cpp|hpp|l|y)$/', $paths));
-
     $linters[] = id(new ArcanistFlake8Linter())
       ->setPaths(preg_grep('/\.py$/', $paths));
 
     $linters[] = id(new ArcanistRubyLinter())
       ->setPaths(preg_grep('/\.rb$/', $paths));
-
-    $linters[] = id(new ArcanistScalaSBTLinter())
-      ->setPaths(preg_grep('/\.scala$/', $paths));
 
     $linters[] = id(new ArcanistJSHintLinter())
       ->setPaths(preg_grep('/\.js$/', $paths));
