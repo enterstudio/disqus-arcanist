@@ -32,8 +32,6 @@ echo "Creating default .arcconfig at '$arc_path'"
   "conduit_uri": "http://ph.in.zhihu.com",
   "arc.land.onto.default": "master",
   "arc.land.remote.default": "origin",
-  "lint.engine": "ComprehensiveLintEngine",
-  "lint.flake8.options": "--ignore=E125,E501",
   "events.listeners": ["JenkinsDiffEventListener"],
   "jenkins.uri": "http://ci.in.zhihu.com",
   "jenkins.job": "$project_id",
@@ -41,3 +39,25 @@ echo "Creating default .arcconfig at '$arc_path'"
 }
 EOT
 } > $arc_path
+
+arclint_path="${root}/.arclint"
+echo "Creating default .arclint at '$arclint_path'"
+
+{ cat <<EOT
+{
+  "linters": {
+    "flake8": {
+      "type": "flake8",
+      "include": "(\\.py$)",
+      "severity": {
+        "E129": "disabled",
+        "E501": "disabled"
+      }
+    },
+    "merge-conflict": {
+      "type": "merge-conflict"
+    }
+  }
+}
+EOT
+} > $arclint_path
