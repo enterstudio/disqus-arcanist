@@ -22,8 +22,6 @@ fi
 
 project_id=$(echo "$root" | python -c "import sys; print sys.stdin.read().rsplit('/', 1)[-1]")
 
-libdisqus_path=$(brew --prefix arcanist)/arcanist/externals/includes/libdisqus/src
-
 echo "Creating default .arcconfig at '$arc_path'"
 
 { cat <<EOT
@@ -35,7 +33,7 @@ echo "Creating default .arcconfig at '$arc_path'"
   "events.listeners": ["JenkinsDiffEventListener"],
   "jenkins.uri": "http://ci.in.zhihu.com",
   "jenkins.job": "$project_id",
-  "load": ["$libdisqus_path"]
+  "load": ["libdisqus/src"]
 }
 EOT
 } > $arc_path
